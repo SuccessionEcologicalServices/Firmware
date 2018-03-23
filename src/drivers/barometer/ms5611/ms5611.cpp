@@ -1119,10 +1119,7 @@ test(enum MS5611_BUS busid)
 	}
 
 	warnx("single read");
-	warnx("pressure:    %10.4f", (double)report.pressure);
-	warnx("altitude:    %11.4f", (double)report.altitude);
-	warnx("temperature: %8.4f", (double)report.temperature);
-	warnx("time:        %lld", report.timestamp);
+	print_message(report);
 
 	/* set the queue depth to 10 */
 	if (OK != ioctl(fd, SENSORIOCSQUEUEDEPTH, 10)) {
@@ -1155,10 +1152,7 @@ test(enum MS5611_BUS busid)
 		}
 
 		warnx("periodic read %u", i);
-		warnx("pressure:    %10.4f", (double)report.pressure);
-		warnx("altitude:    %11.4f", (double)report.altitude);
-		warnx("temperature: %8.4f", (double)report.temperature);
-		warnx("time:        %lld", report.timestamp);
+		print_message(report);
 	}
 
 	close(fd);
